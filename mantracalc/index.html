@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mantra Damage Calculator</title>
+</head>
+<body>
+    <h3 style="color=Red>The mantra damage formula used in this webpage has been found to be innacurate.</h3>
+    <input type="number" id="basedamageInput" style="width: 50%;" placeholder="Enter the basedamage of the mantra." oninput="updateText()"> <br>
+    <input type="number" id="investmentInput" style="width: 50%;" placeholder="Enter the investment amount." oninput="updateText()"> <br>
+    <input type="number" id="songchantInput" style="width: 50%;" placeholder="Enter the songchant amount." oninput="updateText()"> <br>
+    
+    <p>Mantra damage after scaling: <span id="textField"></span></p>
+
+    <script>
+        function updateText() {
+            const scaling = 0.7;
+            const basedamage = document.getElementById('basedamageInput').value;
+            const investment = document.getElementById('investmentInput').value;
+            const songchant = document.getElementById('songchantInput').value;
+            
+            const damageAfterScaling = basedamage*(1+(scaling*(investment/100)+((songchant/20)*(0.7*(investment/100)))))
+            
+            document.getElementById('textField').textContent = damageAfterScaling;
+        }
+    </script>
+</body>
+</html>
